@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Validation with AJAX</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+<div>
+    <form id="validationForm" method="post">
+        <label>Email:</label>
+        <input type="email" id="email" name="email">
+        <button type="button" onclick="validateEmail()">Validate</button>
+    </form>
+    <div id="validationResult"></div>
+</div>
+
+<script>
+    function validateEmail() {
+        var email = document.getElementById("email").value;
+        if (!email) {
+            alert("Please enter an email address.");
+            return;
+        }
+
+        // Simulating server-side validation
+        if (!isValidEmail(email)) {
+            $('#validationResult').html("<p style='color: red;'>Invalid email address.</p>");
+        } else {
+            $('#validationResult').html("<p style='color: green;'>Email is valid.</p>");
+        }
+    }
+
+    function isValidEmail(email) {
+        // Simulated email validation (you can replace it with your own validation logic)
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+</script>
+
+</body>
+</html>
